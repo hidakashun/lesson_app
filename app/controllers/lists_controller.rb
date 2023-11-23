@@ -22,6 +22,14 @@ class ListsController < ApplicationController
   end
 
   def edit
+    #findメソッドを使い、保存されているデータを取得
+    @list = List.find(params[:id])
+  end
+  
+  def update
+    list = List.find(params[:id])
+    list.update(list_params)
+    redirect_to list_path(list.id)
   end
 
   private
