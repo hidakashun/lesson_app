@@ -8,6 +8,8 @@
   <% @list.list_images.each do |image| %>
     <%= image_tag image, size: "200x200" %> <br>
   <% end %>
+<% else %>
+  <%= image_tag 'no_image', size: "200x200" %><br>
 <% end %>
 
 <%= link_to "編集", edit_list_path(@list.id) %>
