@@ -41,6 +41,6 @@ class ListsController < ApplicationController
   private
   # ストロングパラメータ
   def list_params# 保存機能を追加
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, list_images: [])
   end
 end
