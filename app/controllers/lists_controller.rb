@@ -4,13 +4,13 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
-  def create# 保存機能を追加
-    # １.&2. データを受け取り新規登録するためのインスタンス作成
-    list = List.new(list_params)
-    # 3. データをデータベースに保存するためのsaveメソッド実行
-    list.save
-    # 4. 詳細画面へリダイレクト
-    redirect_to list_path(list.id)
+  def create
+    @list = List.new(list_params)
+    if @list.save # 保存されたとき
+      redirect_to list_path(@list.id)
+    else # 保存されなかった時
+      render :new
+    end
   end
 
   def index
@@ -27,9 +27,12 @@ class ListsController < ApplicationController
   end
 
   def update
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to list_path(list.id)
+    @list = List.find(params[:id])
+    if @list.update(list_params) # 更新されたとき
+      redirect_to list_path(@list.id)
+    else# 更新されなかったとき
+      render :edit
+    end
   end
 
   def destroy

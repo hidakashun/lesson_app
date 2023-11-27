@@ -1,5 +1,7 @@
 <h1>新規投稿</h1>
 
+<%= render 'layouts/errors', obj: @list %>
+
 <%= form_with model: List.new do |f| %>
 
   <h4>タイトル</h4>

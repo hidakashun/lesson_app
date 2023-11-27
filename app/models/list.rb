@@ -2,6 +2,9 @@ class List < ApplicationRecord
 
   has_many_attached :list_images
 
+  validates :title, presence: true
+  validates :body, presence: true
+
   FILE_NUMBER_LIMIT = 3
 
   validate :validate_number_of_files
